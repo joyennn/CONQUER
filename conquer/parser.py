@@ -113,7 +113,7 @@ def dp(
     use_gpu: bool = False,
     stanza_pipeline=None,
     output_path: str | Path | None = None,
-    workspace_root: str | Path = ".dp_gpt",
+    workspace_root: str | Path = ".conquer",
     resume: bool = True,
     show_progress: bool = True,
     auto_cleanup: bool = False,
@@ -372,7 +372,7 @@ def load_parsed(
 
 def cleanup_workspace(
     path: str | Path,
-    workspace_root: str | Path = ".dp_gpt",
+    workspace_root: str | Path = ".conquer",
 ) -> None:
     """Delete the hash-based workspace for a given input corpus."""
     path = Path(path).expanduser().resolve()
@@ -430,7 +430,7 @@ def _make_metadata(
     stat = source_path.stat()
 
     return {
-        "tool": "dp_gpt",
+        "tool": "conquer",
         "module": "parser",
         "parser": "stanza",
         "source_path": str(source_path),
