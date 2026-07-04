@@ -1,0 +1,16 @@
+[project]
+name = "conquer"
+version = "0.1.0"
+description = "Natural language interface for construction-based corpus querying"
+requires-python = ">=3.9"
+
+dependencies = [
+    "pandas>=2.0",
+    "openai>=1.0",
+    "stanza>=1.8",
+    "pyarrow>=14.0",
+]
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
