@@ -1,0 +1,5 @@
+pandas>=2.0
+openai>=1.0
+stanza>=1.8
+pyarrow>=14.0
+jsonschema>=4.0
