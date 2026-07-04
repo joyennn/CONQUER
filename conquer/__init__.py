@@ -1,15 +1,35 @@
-"""DP-GPT 2.0: auditable dependency-based corpus querying."""
+"""CONQUER: Natural language interface for construction-based corpus querying."""
 
-from .parser import dp, preview, size, save_parquet, load_parquet
-from .planner import plan_query, show_plan, save_plan, load_plan
+from .parser import dp, size, load_parquet
+from .planner import (
+    set_api_key,
+    plan_query,
+    plan_set,
+    save,
+    load,
+    show,
+)
+from .validator import validate, show_report, show_report_json
 from .compiler import compile_plan, generate_code, show_code
-from .validator import validate, show_report
-from .executor import apply
-from .diagnosis import diagnose, suggest_fix
+from .executor import apply, show_results, QueryResults
 
 __all__ = [
-    "dp", "preview", "size", "save_parquet", "load_parquet",
-    "plan_query", "show_plan", "save_plan", "load_plan",
-    "compile_plan", "generate_code", "show_code",
-    "validate", "show_report", "apply", "diagnose", "suggest_fix",
+    "dp",
+    "size",
+    "load_parquet",
+    "set_api_key",
+    "plan_query",
+    "plan_set",
+    "save",
+    "load",
+    "show",
+    "validate",
+    "show_report",
+    "show_report_json",
+    "compile_plan",
+    "generate_code",
+    "show_code",
+    "apply",
+    "show_results",
+    "QueryResults",
 ]
