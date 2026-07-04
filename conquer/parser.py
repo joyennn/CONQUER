@@ -1,4 +1,4 @@
-"""Dependency parsing utilities for DP-GPT.
+"""Dependency parsing utilities.
 
 This module handles corpus preprocessing only:
 
