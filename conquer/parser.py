@@ -659,7 +659,7 @@ def _progress_iterator(
 def _print_load_message(output_path: Path) -> None:
     """Print message when existing parsed corpus is loaded."""
     print("=" * 58)
-    print("DP-GPT Parser")
+    print("CONQUER Parser")
     print("=" * 58)
     print("Existing parsed corpus found.")
     print(f"Loading      : {output_path}")
@@ -681,7 +681,7 @@ def _print_start_message(
     mode = "Resume" if resume and completed_batches > 0 else "Parse"
 
     print("=" * 58)
-    print("DP-GPT Parser")
+    print("CONQUER Parser")
     print("=" * 58)
     print(f"Mode        : {mode}")
     print(f"Corpus      : {source_path}")
