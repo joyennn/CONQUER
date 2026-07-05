@@ -26,7 +26,7 @@ QUERY_PLAN_SCHEMA = {
         },
         "notes": {"type": "array", "items": {"type": "string"}},
     },
-    "required": ["target", "include", "exclude"],
+    "required": ["target", "description", "include", "exclude", "notes"],
     "$defs": {
         "condition": {
             "type": "object",
@@ -50,10 +50,24 @@ QUERY_PLAN_SCHEMA = {
                 "list_file": {"type": ["string", "null"]},
                 "head": {"type": ["string", "null"]},
                 "head_field": {"type": ["string", "null"]},
-                "head_operator": {"type": ["string", "null"], "enum": sorted(VALID_OPERATORS) + [None]},
+                "head_operator": {
+                    "type": ["string", "null"],
+                    "enum": sorted(VALID_OPERATORS) + [None],
+                },
                 "head_value": {"type": ["string", "number", "null"]},
             },
-            "required": ["type", "field", "operator"],
+            "required": [
+                "name",
+                "type",
+                "field",
+                "operator",
+                "value",
+                "list_file",
+                "head",
+                "head_field",
+                "head_operator",
+                "head_value",
+            ],
         }
     },
 }
