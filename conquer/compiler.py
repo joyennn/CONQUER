@@ -322,7 +322,7 @@ def generate_code(plan_or_plan_set: dict[str, Any]) -> str:
 
     lines: list[str] = []
     lines.append("# --------------------------------------------------")
-    lines.append("# DP-GPT Generated Python Query")
+    lines.append("# CONQUER Generated Python Query")
     lines.append("# --------------------------------------------------")
     lines.append(f"# Description: {plan.get('description', '')}")
     lines.append("")
