@@ -52,6 +52,25 @@ def _ensure_plan_type(plan: dict[str, Any]) -> dict[str, Any]:
     return plan
 
 
+def _normalize_plan_output(obj: dict[str, Any]) -> dict[str, Any]:
+    """Normalize common LLM output wrappers into a Query Plan."""
+    if not isinstance(obj, dict):
+        raise TypeError("LLM output must be a dictionary.")
+
+    for key in ["query_plan", "plan", "output", "result"]:
+        if key in obj and isinstance(obj[key], dict):
+            obj = obj[key]
+            break
+
+    if "include" not in obj or "exclude" not in obj:
+        raise ValueError(
+            "LLM output does not contain a valid Query Plan. "
+            "Expected keys: include, exclude."
+        )
+
+    return _ensure_plan_type(obj)
+
+
 # ---------------------------------------------------------------------
 # Query planning
 # ---------------------------------------------------------------------
@@ -106,7 +125,7 @@ def plan_query(
         )
 
         plan = json.loads(_extract_output_text(response))
-        return _ensure_plan_type(plan)
+        return _normalize_plan_output(plan)
 
     except Exception as exc:
         if not allow_fallback:
@@ -123,7 +142,7 @@ def plan_query(
         )
 
         plan = json.loads(response.choices[0].message.content)
-        return _ensure_plan_type(plan)
+        return _normalize_plan_output(plan)
 
 
 def _format_external_files(files: list[str] | dict[str, str] | None) -> str:
@@ -240,7 +259,7 @@ def plan_set(
         if not isinstance(plan, dict):
             raise TypeError(f"plans[{i}] must be a dictionary.")
 
-        plan = _ensure_plan_type(plan)
+        plan = _normalize_plan_output(plan)
 
         if plan.get("type") != "plan":
             raise ValueError(f"plans[{i}] must have type='plan'.")
